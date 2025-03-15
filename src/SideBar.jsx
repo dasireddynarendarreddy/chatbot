@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
 import { TrashIcon } from "@heroicons/react/24/solid";
 import { Hist } from "./App"; // Ensure this import is correct
-
+import { ArrowUturnRightIcon } from "@heroicons/react/24/solid";
 const SideBar = () => {
-  const { predata, setpredata, setinput } = useContext(Hist);
+  const { predata, setpredata, setinput,messages,setMessages } = useContext(Hist);
   const [isOpen, setIsOpen] = useState(false);
 
   const removeItem = (index) => {
     setpredata(predata.filter((_, i) => i !== index));
+    setMessages(messages.filter((_,i)=>i!==index))
+    
   };
 
   return (
@@ -55,6 +57,7 @@ const SideBar = () => {
                     removeItem(i);
                   }}
                 />
+                <ArrowUturnRightIcon className="w-6 h-6 text-blue-500" onClick={()=>setinput(d)} />
               </div>
             ))
           )}

@@ -8,9 +8,10 @@ function App() {
   const [predata, setpredata] = useState([]);
   const [input, setinput] = useState("");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true); 
+  const [messages, setMessages] = useState([]);
 
   return (
-    <Hist.Provider value={{ predata, setpredata, input, setinput }}>
+    <Hist.Provider value={{ predata, setpredata, input, setinput,messages,setMessages }}>
       <div>
         
        

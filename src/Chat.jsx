@@ -3,8 +3,8 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Hist } from "./App";
 import './App.css'
 const Chat= () => {
-  const [messages, setMessages] = useState([]);
-  const { predata, setpredata, input, setinput } = useContext(Hist);
+  //const [messages, setMessages] = useState([]);
+  const { predata, setpredata, input, setinput,messages} = useContext(Hist);
   const[loading,setloading]=useState(false)
 
   const handleSend = async () => {
@@ -39,7 +39,7 @@ const Chat= () => {
   return (
     <>
       <div className="flex flex-col flex-grow h-screen p-5 bg-gray-100 w-full">
-      {loading?<div className="loader"></div>:""}
+      
         <div className="flex-grow overflow-y-auto">
           {messages.map((msg, index) => (
             <div key={index} className="p-3 rounded-lg my-2">
@@ -47,10 +47,13 @@ const Chat= () => {
                 {msg.question}
               </div>
               <div>{msg.answer}</div>
-              
+             
             </div>
           
           ))}
+        </div>
+        <div>
+        {loading?<div className="loader"></div>:""}
         </div>
 
         <div className="flex mt-4">

@@ -13,5 +13,8 @@
     -webkit-mask-composite: source-out;
             mask-composite: subtract;
     animation: l3 1s infinite linear;
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }
   @keyframes l3 {to{transform: rotate(1turn)}}
