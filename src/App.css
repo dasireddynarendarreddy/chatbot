@@ -1,4 +1,4 @@
-/* HTML: <div class="loader"></div> */
+
 .loader {
     width: 50px;
     padding: 8px;
@@ -18,3 +18,7 @@
     align-items: center;
   }
   @keyframes l3 {to{transform: rotate(1turn)}}
+  #chat
+  {
+        scroll-behavior: smooth;
+  }

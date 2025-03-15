@@ -11,18 +11,22 @@ function App() {
   const [messages, setMessages] = useState([]);
 
   return (
+    <>
+     
     <Hist.Provider value={{ predata, setpredata, input, setinput,messages,setMessages }}>
       <div>
+       
         
        
           <SideBar toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
        </div>
-
+         
       
           <Chat />
         
       
     </Hist.Provider>
+    </>
   );
 }
 

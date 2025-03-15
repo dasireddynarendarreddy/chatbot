@@ -1,9 +1,10 @@
 import React, { useContext, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Hist } from "./App";
+import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import './App.css'
 const Chat= () => {
-  //const [messages, setMessages] = useState([]);
+ 
   const { predata, setpredata, input, setinput,messages} = useContext(Hist);
   const[loading,setloading]=useState(false)
 
@@ -38,19 +39,22 @@ const Chat= () => {
 
   return (
     <>
-      <div className="flex flex-col flex-grow h-screen p-5 bg-gray-100 w-full">
-      
+     
+      <div id="chat" className="flex flex-col flex-grow h-screen p-5 bg-gray-100 w-full">
+             
         <div className="flex-grow overflow-y-auto">
-          {messages.map((msg, index) => (
+          {messages.length>0?messages.map((msg, index) => (
             <div key={index} className="p-3 rounded-lg my-2">
               <div className="bg-blue-500 text-white p-3 rounded-lg shadow-lg max-w-xs">
                 {msg.question}
               </div>
-              <div>{msg.answer}</div>
+              <div  id={msg.question}>{msg.answer}</div>
              
             </div>
           
-          ))}
+          )):<div>
+            <div className="justify-center align-center flex animate-bounce text-4xl font-bold">Try Gpt</div>
+            </div>}
         </div>
         <div>
         {loading?<div className="loader"></div>:""}
@@ -64,8 +68,8 @@ const Chat= () => {
             className="flex-grow p-3 border rounded-l-md"
             placeholder="Type your message..."
           />
-          <button onClick={handleSend} className="bg-green-500 text-white px-4 rounded-r-md">
-            Send
+          <button onClick={handleSend} className="bg-white text-white px-4 rounded-r-md">
+          <PaperAirplaneIcon  className={input.length>0?"h-6 w-6 text-black":"h-6 w-6 text-gray-500"} disabled={input.length>0?true:false}/>
           </button>
         </div>
       </div>
