@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Hist } from "./App";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
+import {Typewriter} from 'react-simple-typewriter'
 import './App.css'
 const Chat= () => {
  
   const { predata, setpredata, input, setinput,messages} = useContext(Hist);
   const[loading,setloading]=useState(false)
+  const[showcursor,setShowCursor]=useState(true)
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -48,7 +50,9 @@ const Chat= () => {
               <div className="bg-blue-500 text-white p-3 rounded-lg shadow-lg max-w-xs">
                 {msg.question}
               </div>
-              <div  id={msg.question}>{msg.answer}</div>
+              <div  id={msg.question}>
+                <Typewriter words={[msg.answer]} loop={1} cursor={showcursor} cursorStyle="|"  typeSpeed={40} delaySpeed={0} onLoopDone={()=>setShowCursor(false)}/>
+              </div>
              
             </div>
           
