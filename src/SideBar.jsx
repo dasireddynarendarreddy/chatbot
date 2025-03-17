@@ -52,7 +52,7 @@ const SideBar = () => {
           ) : (
             predata.map((d, i) => (
               <div key={i} className="bg-white text-black rounded-md p-2 flex justify-between items-center cursor-pointer">
-                <span onClick={() => setinput(d)}>{d}</span>
+                <span onClick={() => setinput(d)}>{d.length>20?d.substr(0,20):d+"..."}</span>
                 <TrashIcon
                   className="w-6 h-6 text-red-500 cursor-pointer"
                   onClick={(e) => {

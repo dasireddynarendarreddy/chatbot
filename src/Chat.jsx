@@ -3,12 +3,13 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { Hist } from "./App";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid";
 import {Typewriter} from 'react-simple-typewriter'
+import Markdown from './Markdown'
 import './App.css'
 const Chat= () => {
  
   const { predata, setpredata, input, setinput,messages} = useContext(Hist);
   const[loading,setloading]=useState(false)
-  const[showcursor,setShowCursor]=useState(true)
+  const[showcursor,setShowCursor]=useState(false)
 
   const handleSend = async () => {
     if (!input.trim()) return;
@@ -51,7 +52,9 @@ const Chat= () => {
                 {msg.question}
               </div>
               <div  id={msg.question}>
-                <Typewriter words={[msg.answer]} loop={1} cursor={showcursor} cursorStyle="|"  typeSpeed={40} delaySpeed={0} onLoopDone={()=>setShowCursor(false)}/>
+               {/*<Typewriter words={[msg.answer]} loop={1} cursor={showcursor} cursorStyle="|"  typeSpeed={40} delaySpeed={0} onLoopDone={()=>setShowCursor(false)}/>*/}
+               <Markdown text={msg.answer}/>
+
               </div>
              
             </div>
@@ -73,7 +76,7 @@ const Chat= () => {
             placeholder="Type your message..."
           />
           <button onClick={handleSend} className="bg-white text-white px-4 rounded-r-md">
-          <PaperAirplaneIcon  className={input.length>0?"h-6 w-6 text-black":"h-6 w-6 text-gray-500"} disabled={input.length>0?true:false}/>
+          <PaperAirplaneIcon  className={input.length>0?"h-6 w-6 text-black cursor-pointer":"h-6 w-6 text-gray-500 cursor-not-allowed"} disabled={input.length>0?true:false}/>
           </button>
         </div>
       </div>
